@@ -4,8 +4,9 @@ import { useLayoutEffect, useSyncExternalStore } from "react";
 
 const STORAGE_KEY = "airconvert-site-theme";
 
-// Inline so it runs during HTML parsing, before first paint — otherwise the
-// page would flash the default (dark) theme for light-mode visitors.
+// Inline so it runs during HTML parsing, before first paint. With no saved
+// choice the CSS already follows the OS theme; this applies a saved choice
+// that differs from it (e.g. dark picked on a light-mode OS).
 const THEME_INIT_SCRIPT = `(function () {
   try {
     var stored = localStorage.getItem("${STORAGE_KEY}");
