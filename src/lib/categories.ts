@@ -1,50 +1,19 @@
-export interface CategoryDef {
-  name: string;
-  status: "available" | "planned";
-  description: string;
-  formats: string;
-  engine: string;
-}
+// Language-neutral category data. Names, descriptions and engine labels
+// live in the i18n dictionaries under `formats.categories[id]`.
+export const CATEGORY_IDS = [
+  "images",
+  "audio",
+  "documents",
+  "spreadsheets",
+  "video",
+] as const;
 
-export const CATEGORIES: CategoryDef[] = [
-  {
-    name: "Images",
-    status: "available",
-    description:
-      "jpg, png, webp, gif, bmp, tiff, svg, ico, tga, pnm, qoi, and avif (output only) — with optional max-dimension resize and JPG/WebP quality control.",
-    formats: "jpg · png · webp · gif · bmp · tiff · svg · ico · tga · pnm · qoi · avif",
-    engine: "Pure Rust (image, resvg) — no external binaries",
-  },
-  {
-    name: "Audio",
-    status: "available",
-    description:
-      "mp3, wav, flac, ogg, m4a, aac, opus, and wma via a bundled FFmpeg sidecar — the same binary Video uses.",
-    formats: "mp3 · wav · flac · ogg · m4a · aac · opus · wma",
-    engine: "Bundled FFmpeg sidecar",
-  },
-  {
-    name: "Documents",
-    status: "available",
-    description:
-      "md, txt, html, rtf, odt, and docx via a bundled Pandoc sidecar. Content conversion — not a full-fidelity layout engine.",
-    formats: "md · txt · html · rtf · odt · docx",
-    engine: "Bundled Pandoc sidecar",
-  },
-  {
-    name: "Spreadsheets",
-    status: "available",
-    description:
-      "csv, xlsx, xls, and ods as input; csv and xlsx as output. First worksheet only, data values only — no formulas, macros, or styling.",
-    formats: "csv · xlsx · xls · ods (input only)",
-    engine: "Pure Rust (calamine, rust_xlsxwriter, csv)",
-  },
-  {
-    name: "Video",
-    status: "available",
-    description:
-      "mp4, mov, avi, webm, and gif, plus mkv/flv/wmv as extra inputs — including a two-pass palette-based GIF encode for decent color quality.",
-    formats: "mp4 · mov · avi · webm · gif",
-    engine: "Bundled FFmpeg sidecar",
-  },
-];
+export type CategoryId = (typeof CATEGORY_IDS)[number];
+
+export const CATEGORY_FORMATS: Record<CategoryId, string> = {
+  images: "jpg · png · webp · gif · bmp · tiff · svg · ico · tga · pnm · qoi · avif",
+  audio: "mp3 · wav · flac · ogg · m4a · aac · opus · wma",
+  documents: "md · txt · html · rtf · odt · docx",
+  spreadsheets: "csv · xlsx · xls · ods",
+  video: "mp4 · mov · avi · webm · gif",
+};
