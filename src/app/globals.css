@@ -17,7 +17,7 @@
   --danger: #dc2626;
 }
 
-.dark {
+[data-theme="dark"] {
   --background: #0a0f0e;
   --background-subtle: #070b0a;
   --surface: #111917;
@@ -57,7 +57,7 @@ html {
   color-scheme: light;
 }
 
-html.dark {
+html[data-theme="dark"] {
   color-scheme: dark;
 }
 

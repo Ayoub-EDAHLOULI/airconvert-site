@@ -56,6 +56,7 @@ export default function LanguageSwitcher({
             <button
               key={locale}
               onClick={() => switchTo(locale)}
+              lang={locale}
               className={`block w-full px-4 py-2 text-start transition-colors hover:bg-surface-hover hover:text-text ${
                 locale === lang ? "text-primary" : "text-subtext"
               }`}
